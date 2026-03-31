@@ -10,10 +10,14 @@ LES MEMBRES DU GROUPE : IMTICIA 4
 
 Description du projet : jeu de morpion, creation d'un IA adversaire
 
+
+
 # EXAMEN M1 S1 , MACHINE LEARNING
 
 Ce projet présente un pipeline complet de Machine Learning pour le jeu du Morpion (Tic-Tac-Toe), allant de la génération automatisée de données par Minimax jusqu'à une interface de jeu réactive intégrant des modèles d'IA.
 
+
+[Lien Video]()
 ## 📋 Table des Matières
 1. [Génération du Dataset](#1-génération-du-dataset)
 2. [Analyse Exploratoire (EDA)](#2-analyse-exploratoire)

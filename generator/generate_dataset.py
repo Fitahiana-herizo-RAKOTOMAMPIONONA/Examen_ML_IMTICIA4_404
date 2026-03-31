@@ -49,17 +49,14 @@ class Node:
         x_count = self.board.count(X)
         o_count = self.board.count(O)
 
-        # Règle du tour
         if not (x_count == o_count or x_count == o_count + 1):
             return False
 
-        # Vérification des victoires multiples impossibles
         x_wins = self._check_winner() == X
         o_wins = self._check_winner() == O
         if x_wins and o_wins:
             return False
 
-        # Vérification de la cohérence du dernier coup
         if x_wins and x_count != o_count + 1:
             return False
         if o_wins and x_count != o_count:
@@ -70,8 +67,8 @@ class Node:
     def encode(self) -> List[int]:
         features = []
         for cell in self.board:
-            features.append(1 if cell == X else 0)   # ci_x
-            features.append(1 if cell == O else 0)   # ci_O
+            features.append(1 if cell == X else 0)
+            features.append(1 if cell == O else 0)
         return features
 
     def get_minimax_score(self, alpha: int = -2, beta: int = 2) -> int:
@@ -85,7 +82,7 @@ class Node:
         turn = self.get_turn()
         successors = self.getsuc()
 
-        if turn == X:  # Maximizing
+        if turn == X:
             best = -2
             for succ in successors:
                 score = succ.get_minimax_score(alpha, beta)
@@ -94,7 +91,7 @@ class Node:
                 if beta <= alpha:
                     break
             return best
-        else:  # Minimizing
+        else:
             best = 2
             for succ in successors:
                 score = succ.get_minimax_score(alpha, beta)
@@ -126,22 +123,19 @@ def generate_dataset():
             features = node.encode()
             dataset.append(features + [x_wins, is_draw])
 
-        # Continuer l'exploration
         for succ in node.getsuc():
             explore(succ)
 
-    # Racine (plateau vide)
     root = Node([EMPTY] * 9)
     explore(root)
     return dataset
 
 
 def main():
-    print("🎮 Génération du dataset Morpion (Version POO)...")
+    print("Génération du dataset...")
     
     dataset = generate_dataset()
 
-    # En-têtes
     headers = []
     for i in range(9):
         headers.extend([f"c{i}_x", f"c{i}_O"])
