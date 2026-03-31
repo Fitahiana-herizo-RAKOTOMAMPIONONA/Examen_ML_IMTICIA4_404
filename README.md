@@ -1,4 +1,16 @@
-# 🎮 Projet ML Morpion — Hackathon EdTech 2026
+NOM DU GROUPE : 404 NOT FOUND
+LES MEMBRES DU GROUPE : IMTICIA 4
+    - RAKOMAMPIONONA Fitahiana Herizo        n 07
+    - RAKOTONANDRASANA Rova Fanantenana      n 24
+    - RAZAFIMAHANDRY Herintsoa Fitahiana     n 15
+    - RANDRIANARISOA Notahiniela Olly Desto  n 20
+    - RAKOTONINDRINA Andry Anicet            n 12
+    - RAKOTOBE Lori Emmanuela                n 10
+    - HARINIRIANA Nomena Niaina Kévin        n 19
+
+Description du projet : jeu de morpion, creation d'un IA adversaire
+
+# EXAMEN M1 S1 , MACHINE LEARNING
 
 Ce projet présente un pipeline complet de Machine Learning pour le jeu du Morpion (Tic-Tac-Toe), allant de la génération automatisée de données par Minimax jusqu'à une interface de jeu réactive intégrant des modèles d'IA.
 
@@ -46,6 +58,10 @@ Située dans `interfaces/`, l'interface React propose :
 - **vs Humain** : Jeu à deux en local.
 - **vs IA (ML)** : Utilise les poids de la Régression Logistique.
 - **vs IA (Hybride)** : Minimax depth 3 + évaluation ML des feuilles.
+On a utilisé customTkinter.
+Instruction et instruction :
+Mettre a jour pip et python.exe (python.exe -m pip install --upgrade pip)
+installer customTkinter(pip install customtkinter et pip install customtkinter --upgrade)
 
 ---
 
