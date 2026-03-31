@@ -46,11 +46,24 @@ Ce projet présente un pipeline complet de Machine Learning pour le jeu du Morpi
 ---
 
 # Instruction et instruction :
+
+si make est installe
+
 ```
     make  #compiler le projet
 ```
 ```
     make run #lancer le projet
+```
+
+ou si make n'est pas installe donc 
+
+```
+    python generator/generate_dataset.py  #generer le dataset
+
+    python notebook_source.py #entrainer le modele
+
+    python interfaces/level.py #lancer l'interface
 ```
 ---
 
