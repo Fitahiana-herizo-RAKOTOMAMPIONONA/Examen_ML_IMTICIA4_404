@@ -35,7 +35,7 @@ Le pipeline inclut :
 Ce projet présente un pipeline complet de Machine Learning pour le jeu du Morpion (Tic-Tac-Toe), allant de la génération automatisée de données par Minimax jusqu'à une interface de jeu réactive intégrant des modèles d'IA.
 
 
-[Lien Video](https://drive.google.com/drive/folders/10IBLziiX-BiaDlof8i4wAqiBojoWreUX?usp=sharing)
+[Lien Video](https://drive.google.com/drive/folders/1OIBLziiX-BiaDlof8i4wAqiBojoWreUX?usp=drive_link)
 ## 📋 Table des Matières
 1. [Génération du Dataset](#1-génération-du-dataset)
 2. [Analyse Exploratoire (EDA)](#2-analyse-exploratoire)
