@@ -3,7 +3,6 @@ from interface import InterfaceJeu
 import os
 from PIL import Image
 
-# Forcer le mode clair et le fond blanc
 ctk.set_appearance_mode("light") 
 ctk.set_default_color_theme("green")
 
@@ -11,21 +10,17 @@ class LevelMenu:
     def __init__(self, root):
         self.root = root
         
-        # Nettoyage
         for widget in self.root.winfo_children():
             widget.destroy()
 
         self.root.title("Morpion 404 - Configuration")
         self.root.geometry("450x600")
         
-        # --- FORCER LE FOND BLANC ICI ---
         self.root.configure(fg_color="white")
 
-        # --- HEADER ---
-        self.header = ctk.CTkFrame(self.root, fg_color="white") # Fond blanc
+        self.header = ctk.CTkFrame(self.root, fg_color="white") 
         self.header.pack(pady=20, padx=20, fill="x")
 
-        # Titre
         self.titre = ctk.CTkLabel(
             self.header, 
             text="CHOISIR MODE", 
@@ -34,15 +29,12 @@ class LevelMenu:
         )
         self.titre.pack(side="left", padx=10)
 
-        # --- LOGO ---
-        # Utilisation d'un chemin absolu pour éviter les erreurs
         script_dir = os.path.dirname(__file__) 
         chemin_logo = os.path.join(script_dir, "logo", "logoispm.png")
 
         if os.path.exists(chemin_logo):
             try:
                 img_data = Image.open(chemin_logo)
-                # On définit l'image pour le mode light et dark
                 self.logo_img = ctk.CTkImage(
                     light_image=img_data, 
                     dark_image=img_data, 
@@ -55,7 +47,6 @@ class LevelMenu:
         else:
             print(f"Fichier introuvable : {chemin_logo}")
 
-        # --- RESTE DU CODE (BOUTONS) ---
         self.frame_buttons = ctk.CTkFrame(self.root, fg_color="white")
         self.frame_buttons.pack(expand=True, fill="both", padx=50)
 
@@ -79,8 +70,6 @@ class LevelMenu:
         self.btn_hybride = ctk.CTkButton(self.frame_buttons, text="VS IA (HYBRIDE)", 
                                         command=lambda: InterfaceJeu(self.root, "Hybride"), **btn_kwargs)
         self.btn_hybride.pack(pady=12, fill="x")
-
-      
 
 if __name__ == "__main__":
     root = ctk.CTk()

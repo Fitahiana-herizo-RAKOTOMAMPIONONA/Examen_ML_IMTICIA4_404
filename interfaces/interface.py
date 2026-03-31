@@ -6,7 +6,6 @@ import math
 import time
 from PIL import Image
 
-# Configuration globale
 ctk.set_appearance_mode("light") 
 ctk.set_default_color_theme("green") 
 
@@ -25,23 +24,20 @@ class AI:
     def predict_x_wins(self, board):
         if not self.data: return 0.5
         
-        # Encodage (18 features)
         features = []
         for cell in board:
             features.append(1 if cell == 'X' else 0)
             features.append(1 if cell == 'O' else 0)
             
-        # Normalisation
         scaler = self.data["scaler"]
         scaled = [(features[i] - scaler["mean"][i]) / scaler["scale"][i] for i in range(18)]
         
-        # Logistique
         model = self.data["lr_xwins"]
         z = sum(scaled[i] * model["coef"][i] for i in range(18)) + model["intercept"]
         return 1 / (1 + math.exp(-z))
 
     def get_best_move_ml(self, board):
-        meilleur_score = 2.0 # On veut minimiser P(X wins) car on est 'O'
+        meilleur_score = 2.0 
         meilleur_coup = -1
         
         for i in range(9):
@@ -55,7 +51,6 @@ class AI:
         return meilleur_coup
 
     def minimax(self, board, depth, is_maximizing):
-        # Evaluation
         victoire = self.verifier_victoire_statique(board)
         if victoire == 'O': return 10 - depth
         if victoire == 'X': return depth - 10
@@ -104,18 +99,15 @@ class InterfaceJeu:
         self.root = root
         self.mode = mode
         
-        # --- LOGIQUE DU JEU ---
         self.joueur = 'X'
-        self.couleurs = {'X': "#198639", 'O': "#3498db"} # Vert ISPM pour X, Bleu pour O
+        self.couleurs = {'X': "#198639", 'O': "#3498db"} 
         self.plateau = ['' for _ in range(9)]
         self.boutons = []
         
-        # Initialisation IA
         script_dir = os.path.dirname(__file__)
         models_path = os.path.join(script_dir, "public", "models.json")
         self.ia = AI(models_path)
 
-        # --- CONFIGURATION FENÊTRE ---
         for widget in self.root.winfo_children():
             widget.destroy()
             
@@ -123,7 +115,6 @@ class InterfaceJeu:
         self.root.geometry("450x650")
         self.root.configure(fg_color="#FFFFFF") 
 
-        # --- HEADER ---
         self.header = ctk.CTkFrame(self.root, fg_color="transparent")
         self.header.pack(pady=20, padx=20, fill="x")
 
@@ -135,7 +126,6 @@ class InterfaceJeu:
         )
         self.titre.pack(side="left", padx=10)
 
-        # Chargement du Logo ISPM
         chemin_logo = os.path.join(script_dir, "logo", "logoispm.png")
         try:
             img_data = Image.open(chemin_logo)
@@ -145,7 +135,6 @@ class InterfaceJeu:
         except Exception as e:
             print(f"Erreur logo: {e}")
 
-        # --- GRILLE DE JEU ---
         self.main_container = ctk.CTkFrame(self.root, fg_color="transparent")
         self.main_container.pack(expand=True)
 
@@ -175,7 +164,6 @@ class InterfaceJeu:
         if self.plateau[i] == '' and self.joueur == 'X':
             self.jouer_tour(i)
             
-            # Tour de l'IA (si pas mode Human)
             if self.mode != "Human" and '' in self.plateau and not self.verifier_victoire():
                 self.root.after(600, self.jouer_ia)
         elif self.plateau[i] == '' and self.mode == "Human" and self.joueur == 'O':
@@ -205,7 +193,7 @@ class InterfaceJeu:
     def jouer_ia(self):
         if self.mode == "ML":
             move = self.ia.get_best_move_ml(self.plateau)
-        else: # Hybride
+        else: 
             move = self.ia.get_best_move_hybride(self.plateau)
             
         if move != -1:
