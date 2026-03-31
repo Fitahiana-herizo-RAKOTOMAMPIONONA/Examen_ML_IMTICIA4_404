@@ -1,23 +1,41 @@
-NOM DU GROUPE : 404 NOT FOUND
-LES MEMBRES DU GROUPE : IMTICIA 4
-    - RAKOMAMPIONONA Fitahiana Herizo        n 07
-    - RAKOTONANDRASANA Rova Fanantenana      n 24
-    - RAZAFIMAHANDRY Herintsoa Fitahiana     n 15
-    - RANDRIANARISOA Notahiniela Olly Desto  n 20
-    - RAKOTONINDRINA Andry Anicet            n 12
-    - RAKOTOBE Lori Emmanuela                n 10
-    - HARINIRIANA Nomena Niaina Kévin        n 19
+# 🎮 Projet Morpion ML - Examen M1 S1,  MACHINE LEARNING
 
-Description du projet : jeu de morpion, creation d'un IA adversaire
+[Site Web ISPM](https://ispm-edu.com) - https://ispm-edu.com
+
+## 👥 Informations Groupe
+**NOM DU GROUPE :** `404 NOT FOUND`  
+**PROMOTION :** `IMTICIA 4`
+
+| N° | Membres du Groupe |
+|:---|:---|
+| 07 | **RAKOMAMPIONONA** Fitahiana Herizo | |
+| 10 | **RAKOTOBE** Lori Emmanuela | |
+| 12 | **RAKOTONINDRINA** Andry Anicet | |
+| 15 | **RAZAFIMAHANDRY** Herintsoa Fitahiana | |
+| 19 | **HARINIRIANA** Nomena Niaina Kévin | |
+| 20 | **RANDRIANARISOA** Notahiniela Olly Desto | |
+| 24 | **RAKOTONANDRASANA** Rova Fanantenana | |
+
+---
+
+## 📝 Description du Projet
+Ce projet consiste en la création d'un **jeu de Morpion (Tic-Tac-Toe)** complet intégrant une **Intelligence Artificielle** comme adversaire. 
+
+Le pipeline inclut :
+*   La génération automatique de données.
+*   L'entraînement de modèles de Machine Learning (Régression Logistique, Random Forest, etc.).
+*   Une interface graphique interactive permettant de défier l'IA en temps réel.
 
 
 
-# EXAMEN M1 S1 , MACHINE LEARNING
+
+
+
 
 Ce projet présente un pipeline complet de Machine Learning pour le jeu du Morpion (Tic-Tac-Toe), allant de la génération automatisée de données par Minimax jusqu'à une interface de jeu réactive intégrant des modèles d'IA.
 
 
-[Lien Video]()
+[Lien Video](https://drive.google.com/drive/folders/1OIBLziiX-BiaDlof8i4wAqiBojoWreUX?usp=drive_link)
 ## 📋 Table des Matières
 1. [Génération du Dataset](#1-génération-du-dataset)
 2. [Analyse Exploratoire (EDA)](#2-analyse-exploratoire)
@@ -26,6 +44,16 @@ Ce projet présente un pipeline complet de Machine Learning pour le jeu du Morpi
 5. [Réponses aux Questions (Q1-Q4)](#5-réponses-aux-questions)
 
 ---
+
+# Instruction et instruction :
+```
+    make  #compiler le projet
+```
+```
+    make run #lancer le projet
+```
+---
+
 
 ## 1. Génération du Dataset
 Le dataset a été généré via un script Python utilisant l'algorithme **Minimax avec élagage Alpha-Bêta**.
@@ -63,11 +91,7 @@ Située dans `interfaces/`, l'interface React propose :
 - **vs IA (ML)** : Utilise les poids de la Régression Logistique.
 - **vs IA (Hybride)** : Minimax depth 3 + évaluation ML des feuilles.
 On a utilisé customTkinter.
-Instruction et instruction :
-Mettre a jour pip et python.exe (python.exe -m pip install --upgrade pip)
-installer customTkinter(pip install customtkinter et pip install customtkinter --upgrade)
 
----
 
 ## 5. Réponses aux Questions
 
