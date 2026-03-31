@@ -199,9 +199,14 @@ function App() {
         <div className="shape shape-3"></div>
       </div>
 
-      <header>
-        <h1>Morpion <span>ML Adaptive</span></h1>
-        <div className="badge">Hackathon EdTech</div>
+      <header className="wrapper">
+        <div>
+          <img src="/logo_ispm.png" alt="ISPM Logo" className="ispm-logo" />
+        </div>
+        <div>
+          <h1>Morpion <span>IA Adaptative</span></h1>
+          <div className="badge">Projet ISPM — Hackathon 2026</div>
+        </div>
       </header>
 
       <main>
@@ -213,19 +218,19 @@ function App() {
                 className={gameMode === 'human' ? 'active' : ''} 
                 onClick={() => { setGameMode('human'); resetGame(); }}
               >
-                👤 vs Humain
+                Humain
               </button>
               <button 
                 className={gameMode === 'ml' ? 'active' : ''} 
                 onClick={() => { setGameMode('ml'); resetGame(); }}
               >
-                🧠 vs IA (ML)
+                IA (ML)
               </button>
               <button 
                 className={gameMode === 'hybrid' ? 'active' : ''} 
                 onClick={() => { setGameMode('hybrid'); resetGame(); }}
               >
-                ⚡ vs IA (Hybride)
+                IA (Hybride)
               </button>
             </div>
 

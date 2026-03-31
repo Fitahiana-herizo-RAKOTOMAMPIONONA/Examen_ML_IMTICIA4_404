@@ -30,6 +30,7 @@ import warnings
 import json
 import os
 import pickle
+from typing import List, Dict, Any, Optional, Union, Tuple
 
 warnings.filterwarnings('ignore')
 sns.set_theme(style="darkgrid", palette="viridis")
@@ -39,7 +40,7 @@ print("=" * 60)
 print("📊 ÉTAPE 1 — ANALYSE EXPLORATOIRE (EDA)")
 print("=" * 60)
 
-df = pd.read_csv("ressources/dataset.csv")
+df: pd.DataFrame = pd.read_csv("ressources/dataset.csv")
 print(f"\n📁 Dataset chargé : {df.shape[0]} lignes × {df.shape[1]} colonnes")
 print(f"\nPremières lignes :")
 print(df.head(10))
@@ -50,12 +51,12 @@ print(df.dtypes)
 print(f"\nValeurs manquantes : {df.isnull().sum().sum()}")
 
 # %% Features et Targets
-feature_cols = [f"c{i}_{p}" for i in range(9) for p in ["x", "o"]]
-target_cols = ["x_wins", "is_draw"]
+feature_cols: List[str] = [f"c{i}_{p}" for i in range(9) for p in ["x", "O"]]
+target_cols: List[str] = ["x_wins", "is_draw"]
 
-X = df[feature_cols]
-y_xwins = df["x_wins"]
-y_draw = df["is_draw"]
+X: pd.DataFrame = df[feature_cols]
+y_xwins: pd.Series = df["x_wins"]
+y_draw: pd.Series = df["is_draw"]
 
 # Créer un label multi-classe pour l'analyse
 df["result"] = "O wins"
@@ -109,7 +110,7 @@ fig, axes = plt.subplots(2, 3, figsize=(15, 10))
 
 # Taux d'occupation par X pour chaque case
 x_occupation = np.array([df[f"c{i}_x"].mean() for i in range(9)]).reshape(3, 3)
-o_occupation = np.array([df[f"c{i}_o"].mean() for i in range(9)]).reshape(3, 3)
+o_occupation = np.array([df[f"c{i}_O"].mean() for i in range(9)]).reshape(3, 3)
 
 sns.heatmap(x_occupation, annot=True, fmt=".3f", cmap="Greens", ax=axes[0, 0],
             xticklabels=["Col 0", "Col 1", "Col 2"],
@@ -170,7 +171,7 @@ corr_xwins = df[feature_cols + ["x_wins"]].corr()["x_wins"][:-1]
 corr_matrix = corr_xwins.values.reshape(9, 2)
 corr_df = pd.DataFrame(corr_matrix,
                         index=[f"Case {i}" for i in range(9)],
-                        columns=["ci_x", "ci_o"])
+                        columns=["ci_x", "ci_O"])
 sns.heatmap(corr_df, annot=True, fmt=".3f", cmap="RdYlGn", center=0, ax=axes[0])
 axes[0].set_title("Corrélation features ↔ x_wins", fontsize=14, fontweight="bold")
 
@@ -179,7 +180,7 @@ corr_draw = df[feature_cols + ["is_draw"]].corr()["is_draw"][:-1]
 corr_matrix2 = corr_draw.values.reshape(9, 2)
 corr_df2 = pd.DataFrame(corr_matrix2,
                          index=[f"Case {i}" for i in range(9)],
-                         columns=["ci_x", "ci_o"])
+                         columns=["ci_x", "ci_O"])
 sns.heatmap(corr_df2, annot=True, fmt=".3f", cmap="RdYlBu", center=0, ax=axes[1])
 axes[1].set_title("Corrélation features ↔ is_draw", fontsize=14, fontweight="bold")
 
